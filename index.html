@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise 💜</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: "Trebuchet MS", sans-serif;
+  color: #604579;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top left, #fff0fa, transparent 40%),
+    linear-gradient(135deg, #fdf7ff, #e9d8ff, #ffeafa);
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  padding: 30px 24px;
+  text-align: center;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid white;
+  box-shadow: 0 20px 60px #8860b52b;
+  backdrop-filter: blur(15px);
+  position: relative;
+  z-index: 2;
+}
+
+.tiny {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a184bc;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 8vw, 46px);
+  font-weight: normal;
+  color: #76529c;
+  margin: 18px 0;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.emoji {
+  display: block;
+  font-size: 42px;
+  margin: 15px;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 24px 0;
+}
+
+.dot {
+  width: 23px;
+  height: 5px;
+  border-radius: 20px;
+  background: #e7d9f3;
+  transition: .3s;
+}
+
+.dot.active {
+  background: #a87be0;
+  width: 34px;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 22px;
+  margin: 7px 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+.primary {
+  color: white;
+  background: linear-gradient(110deg, #9d71d4, #c58de8);
+  box-shadow: 0 8px 20px #a67ad54c;
+}
+
+.secondary {
+  color: #795c98;
+  background: #f3eaff;
+  border: 1px solid #e6d5fa;
+}
+
+.hidden {
+  display: none;
+}
+
+.photo {
+  width: min(100%, 310px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 5px solid white;
+  box-shadow: 0 15px 35px #8560a833;
+  margin: 20px auto;
+  display: block;
+}
+
+.final-note {
+  padding: 15px;
+  border: 1px dashed #d8b8ef;
+  border-radius: 20px;
+  background: #fff8ff;
+}
+
+.footer {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #aa91bd;
+  margin-top: 25px;
+}
+
+.sparkle {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  animation: burst 1.8s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(0,0) scale(.2);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx),var(--dy)) scale(1.5) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.floaty {
+  position: fixed;
+  pointer-events: none;
+  color: #a887d1;
+  animation: float 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(110vh) rotate(0);
+  }
+  to {
+    transform: translateY(-15vh) rotate(260deg);
+  }
+}
+
+.glow {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .5;
+  pointer-events: none;
+}
+
+.g1 {
+  background: #e9c8ff;
+  top: -100px;
+  left: -80px;
+}
+
+.g2 {
+  background: #ffcce8;
+  bottom: -100px;
+  right: -80px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<main class="card">
+
+<div class="tiny" id="eyebrow">
+Happy Birthday Bee.
+</div>
+
+<div class="progress">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<!-- STEP 1 -->
+
+<section class="step" data-step="0">
+
+<span class="emoji">✧･ﾟ: *✧･ﾟ:*</span>
+
+<h1>Becky, hello.</h1>
+
+<p>
+I made a little something for you.
+<br>
+Happy Birthday pokonya mah yaa.
+</p>
+
+<p>
+Just follow the tiny stars and let's see where they take you. 👉🏻👈🏻
+</p>
+
+<button class="primary" onclick="go(1)">
+Let's begin →
+</button>
+
+</section>
+
+<!-- STEP 2 -->
+
+<section class="step hidden" data-step="1">
+
+<span class="emoji">🗝️</span>
+
+<h1>First, a tiny question</h1>
+
+<p>
+Percaya ga kura kura bisa backroll
+</p>
+
+<p>
+Menurut lu, kura kura ninja beneran ninja ga
+</p>
+
+<button class="primary" onclick="go(2)">
+Gktau
+</button>
+
+<button class="secondary" onclick="go(2)">
+Mungkin...?
+</button>
+
+</section>
+
+<!-- STEP 3 -->
+
+<section class="step hidden" data-step="2">
+
+<span class="emoji">💌</span>
+
+<h1>A little reminder</h1>
+
+<p>
+You're allowed to have slow days, messy moments,
+and feelings you can't explain.
+</p>
+
+<p>
+Jangan suka sakit sakit sedih sedih, i adore you soomuch.
+</p>
+
+<p>
+<em>Take a breath. You are doing better than you think.</em>
+</p>
+
+<button class="primary" onclick="go(3)">
+One more thing →
+</button>
+
+</section>
+
+<!-- STEP 4 -->
+
+<section class="step hidden" data-step="3">
+
+<span class="emoji">🎀</span>
+
+<h1>Ready blum</h1>
+
+<p>
+Okay, last step
+</p>
+
+<p>
+Bimsalabim
+</p>
+
+<button class="primary" onclick="go(4); celebrate()">
+ ✦
+</button>
+
+<button class="secondary" onclick="toggleSound()" id="soundBtn">
+♫ Sound: ON
+</button>
+
+</section>
+
+<!-- FINAL ENDING -->
+
+<section class="step hidden" data-step="4">
+
+<span class="emoji">☆✷♡</span>
+
+<div class="tiny">
+Happy Birthdayyy
+</div>
+
+<h1>You're a little bit of magic.</h1>
+
+<p>
+Some people make the world feel softer just by being in it.
+Maybe they don't even realize it, dan orang itu dihidup gua adalaah bebe.
+</p>
+
+<p>
+Dan semoga lu selalu ketemu alasan kecil buat senyum,
+even on the ordinary days.
+</p>
+
+<img
+class="photo"
+src="https://i.ibb.co.com/nsbBydfV/Proyek-Baru-40-08060-F2.png"
+alt="A special little photo"
+>
+
+<div class="final-note">
+
+<p>♡ A little wish for you </p>
+
+<p>
+May your days be gentle, your heart feel loved,
+and your dreams find their way to you.
+</p>
+
+<p>
+Type /Cobe di GC buat liay nextnya yaa.
+</p>
+
+</div>
+
+<button class="primary" onclick="celebrate(true)">
+More sparkle:d
+</button>
+
+<button class="secondary" onclick="restart()">
+Replay ↻
+</button>
+
+<div class="footer">
+MADE WITH ALL LOVE.
+</div>
+
+</section>
+
+</main>
+
+<script>
+let soundOn = true;
+let audioCtx;
+
+function tone(
+  freq = 660,
+  duration = 0.12,
+  type = "sine",
+  volume = 0.045,
+  delay = 0
+) {
+  if (!soundOn) return;
+
+  try {
+    audioCtx = audioCtx ||
+      new (window.AudioContext || window.webkitAudioContext)();
+
+    const t = audioCtx.currentTime + delay;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, t);
+
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(volume, t + 0.015);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(t);
+    osc.stop(t + duration + 0.03);
+
+  } catch (e) {}
+}
+
+function chime() {
+  [523, 659, 784].forEach((f, i) => {
+    tone(f, 0.18, "sine", 0.035, i * 0.075);
+  });
+}
+
+function go(n) {
+  document.querySelectorAll(".step").forEach(el => {
+    el.classList.toggle(
+      "hidden",
+      Number(el.dataset.step) !== n
+    );
+  });
+
+  document.querySelectorAll(".dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === Math.min(n, 4));
+  });
+
+  document.getElementById("eyebrow").textContent =
+    n === 4
+      ? "A little love, wrapped in pixels"
+      : "A tiny little surprise · kejutan kecil";
+
+  if (n < 4) {
+    tone(440 + n * 110, 0.1, "triangle", 0.035);
+  } else {
+    chime();
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function toggleSound() {
+  soundOn = !soundOn;
+
+  document.getElementById("soundBtn").textContent =
+    "♫ Sound: " + (soundOn ? "ON" : "OFF");
+
+  if (soundOn) chime();
+}
+
+function celebrate(more = false) {
+  if (soundOn) {
+    [659, 784, 988, 1175, 1318].forEach((f, i) => {
+      tone(f, 0.28, "sine", 0.045, i * 0.12);
+    });
+
+    setTimeout(() => {
+      [880, 1046, 1318].forEach((f, i) => {
+        tone(f, 0.4, "triangle", 0.035, i * 0.1);
+      });
+    }, 450);
+  }
+
+  const count = more ? 150 : 100;
+
+  const symbols = [
+    "✦", "✧", "✨", "♡",
+    "⋆", "✺", "✿⁠ ", "ෆ"
+  ];
+
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const el = document.createElement("span");
+
+      el.className = "sparkle";
+
+      el.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.top = Math.random() * 85 + "vh";
+
+      el.style.fontSize =
+        Math.random() * 18 + 12 + "px";
+
+      el.style.setProperty(
+        "--dx",
+        (Math.random() - 0.5) * 300 + "px"
+      );
+
+      el.style.setProperty(
+        "--dy",
+        (Math.random() - 0.5) * 280 - 40 + "px"
+      );
+
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), 1900);
+
+    }, i * (more ? 8 : 13));
+  }
+}
+
+function restart() {
+  go(0);
+  chime();
+}
+
+// Floating decorations
+
+for (let i = 0; i < 15; i++) {
+  const f = document.createElement("span");
+
+  f.className = "floaty";
+
+  f.textContent = ["✧", "♡", "⋆", "✦"][i % 4];
+
+  f.style.left = Math.random() * 100 + "vw";
+
+  f.style.fontSize =
+    12 + Math.random() * 17 + "px";
+
+  f.style.animationDuration =
+    7 + Math.random() * 8 + "s";
+
+  f.style.animationDelay =
+    -Math.random() * 12 + "s";
+
+  document.body.appendChild(f);
+}
+</script>
+
+</body>
+</html>
